@@ -1,0 +1,1 @@
+# trading-vol-target-annual-0.40
