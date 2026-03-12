@@ -1,0 +1,50 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / editor
+.idea/
+.vscode/
+.cursor/
+
+# Project-specific
+output/
+Junk/
+
+# Optional: uncomment to ignore data or reports
+# data/
+# reports/
+# *.pbix
+
+# Environment / secrets
+.env
+
+# Paper trading lock files (ephemeral, not committed)
+logs/locks/
+
+# Old flat-file trade logs (superseded by two-table schema)
+logs/paper_trades_*.csv
+
+# Two-table logs ARE tracked (committed back by GH Actions)
+!logs/paper/
+
+# OS
+.DS_Store
+Thumbs.db

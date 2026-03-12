@@ -1,0 +1,54 @@
+name: "Paper Trade: Post-Open Reconciliation"
+
+on:
+  schedule:
+    # Always ~14 minutes after the submit workflow
+    # Submit: 31 14 * * 1-5  => 14:31 UTC
+    # Reconcile: 45 14 * * 1-5 => 14:45 UTC
+    # - Summer (EDT, UTC-4): 14:45 UTC -> 10:45 EDT
+    # - Winter (EST, UTC-5): 14:45 UTC -> 09:45 EST
+    - cron: "45 14 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run post-open reconciliation
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL: ${{ secrets.ALPACA_BASE_URL }}
+        run: python scripts/paper_trade_alpaca.py --mode github-post
+
+      - name: Commit logs back to repo
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add logs/paper/ || true
+          git diff --cached --quiet || git commit -m "paper trade log $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push || true
+
+      - name: Upload reconciliation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reconcile-logs-${{ github.run_id }}
+          path: logs/
+          retention-days: 90

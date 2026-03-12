@@ -1,0 +1,54 @@
+name: "Paper Trade: Pre-Open Signal + Submit"
+
+on:
+  schedule:
+    # 9:31 AM EST / 10:31 AM EDT
+    # 14:31 UTC year-round => always after regular market open
+    - cron: "31 14 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pre-open:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pre-open paper trade
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL: ${{ secrets.ALPACA_BASE_URL }}
+          MAX_DAILY_LOSS_PCT: ${{ secrets.MAX_DAILY_LOSS_PCT }}
+          MAX_POSITION_NOTIONAL: ${{ secrets.MAX_POSITION_NOTIONAL }}
+          ORDER_FILL_TIMEOUT_MIN: ${{ secrets.ORDER_FILL_TIMEOUT_MIN }}
+        run: python scripts/paper_trade_alpaca.py --mode github-pre
+
+      - name: Commit logs back to repo
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add logs/paper/ || true
+          git diff --cached --quiet || git commit -m "paper trade log $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          git push || true
+
+      - name: Upload trade logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trade-logs-${{ github.run_id }}
+          path: logs/
+          retention-days: 90

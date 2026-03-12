@@ -1,0 +1,328 @@
+# Cursor Instructions — Full System: MA(50/250) TQQQ/SQQQ Backtest + Walk-Forward + Vol Targeting + Paper Trading + Overfit Audit
+
+## Goal
+Build a **professional-grade** local system that:
+1) Backtests a MA(50/250) regime strategy that trades **only TQQQ and SQQQ** (or cash), like the video  
+2) Uses **train/test** + **walk-forward validation** (WFA)  
+3) Adds **volatility targeting** (risk parity style sizing) to control leverage-like risk  
+4) Produces **plots**: price+MAs+trade markers (train vs test), plus equity curves per fold and overall  
+5) Provides an **overfitting audit report** (robustness checks, leakage checks, parameter stability)  
+6) Includes a **live-ready paper trading engine** (broker API optional via adapter; must run without broker too)
+
+**Non-negotiable:** No look-ahead. Signals at close; execution at next open (backtest).  
+For paper trading, run once daily near close (like video) and place MOC/limit orders safely.
+
+---
+
+## Core Strategy Summary (must match video)
+- Compute MA50 and MA250 on a **signal series** (QQQ preferred; fallback to TQQQ)
+- Define market regime:
+  - Bull if price > MA250 (optionally confirm MA50>MA250)
+  - Bear if price < MA250 (optionally confirm MA50<MA250)
+- Trade vehicle:
+  - Bull → TQQQ
+  - Bear → SQQQ (or cash if `ALLOW_SHORT=False`)
+- Rebalance only once per day.
+- Add **volatility targeting** to size exposure.
+
+---
+
+## A) Configuration (single config section, all customizable)
+Include these parameters:
+- `INITIAL_CAPITAL = 10000`
+- `ALLOW_SHORT = True`  (if False, bear → cash)
+- `SIGNAL_SERIES = "QQQ"` (fallback `"TQQQ"`)
+- `EXECUTION_MODE = "NEXT_OPEN"` for backtest (signals close t, fill open t+1)
+- `SLIPPAGE_BPS = 5`
+- `COMMISSION_PER_TRADE = 0`
+
+### Walk-forward settings
+- `WFA_TRAIN_YEARS = 5` (or `WFA_TRAIN_DAYS`)
+- `WFA_TEST_YEARS = 1` (or `WFA_TEST_DAYS`)
+- `WFA_STEP_YEARS = 1` (roll forward yearly)
+
+### Parameter search grid (small and defensible)
+- `USE_MA_CONFIRMATION in {True, False}`
+- `COOLDOWN_DAYS in {0, 3, 5}`
+- `EXIT_ON_CROSS in {True}` (default True)
+- `VOL_TARGET_ANNUAL in {0.15, 0.20, 0.25}`  (target annual vol)
+- `VOL_LOOKBACK_DAYS in {20, 40, 60}`
+- Optional partial sizing thresholds:
+  - `DIST_D1 in {0.00, 0.01, 0.02}`
+  - `DIST_D2 in {0.02, 0.04, 0.06}`  with constraint D2>D1
+
+### Risk controls (must exist)
+- `MAX_DAILY_LOSS_PCT = 0.05` (kill-switch for paper trading)
+- `MAX_DRAWDOWN_PCT = 0.30` (halt trading / go cash)
+- `MAX_POSITION_PCT = 1.00` (no leverage in backtest)
+- `MIN_TRADE_GAP_DAYS = 0` (optional additional trade frequency cap)
+
+---
+
+## B) Data Loading & Standardization
+- Load CSVs for:
+  - TQQQ (daily)
+  - SQQQ (daily)
+  - QQQ if present (preferred signal)
+- Standardize columns:
+  - `Date, Open, High, Low, Close, Adj Close, Volume`
+- Parse `Date` → datetime, sort ascending
+- Align all series by common dates intersection
+- Use:
+  - **Adj Close** for indicators and returns
+  - **Open** for next-open fills in backtest
+
+---
+
+## C) Indicators (MA + Vol)
+### Moving averages (on SIGNAL adj close)
+- `MA50 = rolling_mean(signal_adj, 50)`
+- `MA250 = rolling_mean(signal_adj, 250)`
+- Ensure enough warmup bars; ignore rows until MA250 exists.
+
+### Volatility estimator (for vol targeting)
+- Compute daily returns on SIGNAL or on the traded instrument returns (choose one and be consistent).
+- Use rolling realized volatility:
+  - `daily_vol = rolling_std(returns, VOL_LOOKBACK_DAYS)`
+  - Convert to annual: `ann_vol = daily_vol * sqrt(252)`
+
+---
+
+## D) Regime Logic (core, must be clear)
+For each day t (signal computed using close t):
+- Base regime:
+  - bull = `signal_close_t > MA250_t`
+  - bear = `signal_close_t < MA250_t`
+- If `USE_MA_CONFIRMATION=True`:
+  - bull requires `MA50_t > MA250_t`
+  - bear requires `MA50_t < MA250_t`
+- Apply `COOLDOWN_DAYS`:
+  - After a regime switch, do not switch again for N days (prevents churn)
+
+---
+
+## E) Position Sizing — Add Volatility Targeting (MANDATORY)
+Implement volatility targeting so exposure shrinks when volatility rises:
+- Compute target weight:
+  - `raw_weight = VOL_TARGET_ANNUAL / max(ann_vol, epsilon)`
+- Clamp:
+  - `target_weight = min(raw_weight, MAX_POSITION_PCT)`
+- Optionally combine with distance buckets (if enabled):
+  - distance = `(signal_close - MA250)/MA250`
+  - choose base exposure {0.3, 0.6, 1.0} then multiply by `target_weight`
+- Final portfolio allocation:
+  - If bull → `w_TQQQ = target_weight`, `w_SQQQ = 0`
+  - If bear and `ALLOW_SHORT` → `w_TQQQ = 0`, `w_SQQQ = target_weight`
+  - If bear and not allow short → go cash
+
+**Important:** This is “risk parity / vol targeting style” sizing, not multi-asset parity.
+
+---
+
+## F) Execution Model (No Look-ahead)
+### Backtest execution
+- Signals computed at close of day t
+- Trades filled at open of day t+1 with slippage/commission
+- Apply slippage:
+  - buy fill = open*(1 + SLIPPAGE_BPS/10000)
+  - sell fill = open*(1 - SLIPPAGE_BPS/10000)
+
+### Paper trading execution (live-ready)
+- Run once per day ~10–15 minutes before close
+- Use latest data to compute signal (be explicit whether using intraday proxy or yesterday’s close)
+- Place orders as:
+  - Prefer **MOC** if broker supports (or limit near close with safety buffer)
+- Include safeguards:
+  - if data stale → do nothing + alert
+  - if order rejected → retry with backoff
+  - if position mismatch → reconcile and alert
+  - kill-switch checks before sending orders
+
+---
+
+## G) Backtest Engine Requirements (portfolio accounting)
+Track daily:
+- cash
+- shares_TQQQ, shares_SQQQ
+- portfolio_value
+- daily returns
+
+Rebalance:
+- compute target dollar allocation from portfolio_value
+- compute target shares using next open
+- enforce no negative cash; liquidate non-target ETF on switches
+- log each trade
+
+Create Trade Log columns:
+- date, symbol, side, shares, fill_price, notional, reason, weight, ann_vol, phase, fold_id, portfolio_value_after
+
+---
+
+## H) Walk-Forward Validation (MANDATORY)
+Implement a WFA loop:
+- Determine rolling windows:
+  - Train window length = `WFA_TRAIN_YEARS`
+  - Test window length = `WFA_TEST_YEARS`
+  - Step forward by `WFA_STEP_YEARS`
+- For each fold:
+  1) Train: run parameter search grid on train data only
+  2) Select best params using robust score (see below)
+  3) Freeze params
+  4) Test: run backtest on test slice
+  5) Store fold metrics + equity curve + selected params
+
+### Fold scoring (use on TRAIN only)
+Use a combined score:
+- `score = CAGR_train - 0.5*MaxDD_train - 0.1*TurnoverPenalty`
+Where:
+- TurnoverPenalty could be `trades_per_year` normalized
+
+### Aggregate results
+After all folds:
+- Stitch test equity curves across folds to compute overall OOS performance
+- Report distribution of fold metrics (median, worst, best)
+
+---
+
+## I) Visualization Requirements (MANDATORY)
+### 1) Price + MA Chart (Signal series)
+Create a line chart:
+- Signal adjusted close
+- MA50
+- MA250
+Overlay trade markers:
+- ▲ buys, ▼ sells
+- Color by phase:
+  - Training trades: blue/green markers
+  - Testing trades: red/orange markers
+- Draw vertical lines:
+  - Train/test boundary (for simple split)
+  - For WFA: boundaries per fold (train end/test end) with labels or shaded regions
+
+### 2) Equity Curve(s)
+- Plot overall portfolio equity curve
+- Plot separate curves:
+  - Train equity (in-sample) per fold (optional lighter lines)
+  - Test equity per fold (bold)
+- Add drawdown plot OR annotate max drawdown segments
+
+All plots must have titles, legends, axis labels.
+
+---
+
+## J) Output Metrics (must print cleanly)
+For each fold:
+- Train: final equity, CAGR, max DD, vol, trades/year
+- Test: same metrics
+Also overall OOS (stitched test):
+- overall CAGR, max DD, vol, Sharpe (optional), trades/year
+
+Additionally print:
+- “Top 10 drawdown periods” on overall OOS
+- “Last 20 trades” on overall OOS
+- Table of selected params per fold
+
+---
+
+## K) Overfitting Audit (MANDATORY REPORT)
+Generate an “Overfit Audit” section with these checks:
+
+### 1) Parameter Stability
+- Show selected params across folds
+- Flag if parameters vary wildly (instability = overfit risk)
+
+### 2) Sensitivity / Robustness
+- For best params, perturb:
+  - MA windows ±10% (e.g., 45/225, 55/275)
+  - VOL_LOOKBACK ±20
+  - VOL_TARGET ±0.05
+- Confirm performance doesn’t collapse
+
+### 3) Regime Dependence
+- Segment OOS performance by:
+  - Bull regime days vs bear regime days vs sideways (define sideways as frequent flips / low MA spread)
+- Show which regime drives returns
+
+### 4) Cost/Slippage Stress
+- Re-run OOS with slippage = {0, 5, 15} bps
+- Show how fragile returns are to costs
+
+### 5) Data Leakage Checks
+- Assert:
+  - signals never use future bars
+  - execution uses t+1 open
+  - training parameter selection never touches test window
+
+### 6) Reality Checks
+- Compare OOS vs buy-and-hold QQQ and buy-and-hold TQQQ (same time period)
+- Report if outperformance is concentrated in a single year (warning)
+
+The audit should output:
+- A short risk rating: {Low, Medium, High} overfit risk
+- Bullet list explaining why
+
+---
+
+## L) Convert to Live-Ready Paper Trading Engine (MANDATORY)
+Design the code with a clear separation:
+
+### Modules / Components (conceptual separation only; still can be in one file)
+- `DataProvider` interface:
+  - `get_daily_bars(symbol, start, end)` for backtest
+  - `get_latest_bar(symbol)` for live
+- `SignalEngine`:
+  - computes MA50/MA250 + regime + target weights
+- `RiskManager`:
+  - enforces max daily loss, max DD halt, max position, volatility halt
+- `ExecutionBroker` interface:
+  - `place_order(symbol, qty, side, order_type)`
+  - `get_positions()`
+  - `get_cash()`
+- `PaperBroker` implementation (required):
+  - simulates fills and maintains positions locally
+- `LiveBrokerAdapter` stub (optional):
+  - include placeholders (do not require keys)
+
+### Paper trading loop
+- Run function `run_paper_trading_daily()`:
+  - load yesterday close / latest data
+  - compute target weights
+  - check risk limits
+  - generate orders (rebalance)
+  - “place” orders via PaperBroker
+  - log + alert output
+
+### Logging/Alerts
+- Log every action to file
+- Print a daily summary:
+  - target weights
+  - current positions
+  - orders submitted
+  - any risk blocks triggered
+
+---
+
+## M) Acceptance Criteria
+- [ ] Trades only TQQQ/SQQQ (or cash)
+- [ ] Uses MA50 and MA250 exactly
+- [ ] Includes train/test AND walk-forward validation
+- [ ] Includes volatility targeting sizing
+- [ ] Includes visual charts showing:
+  - price + MA50 + MA250
+  - train vs test boundaries
+  - trade markers with phase colors
+- [ ] Includes overfitting audit report with sensitivity tests and stability checks
+- [ ] Includes paper trading engine with clear separation of signal/risk/execution and a PaperBroker
+
+---
+
+## Final Instruction to Cursor
+Implement this as a single runnable program that:
+1) Loads data  
+2) Computes indicators  
+3) Runs WFA (train grid-search → test)  
+4) Stitches OOS equity  
+5) Prints fold + overall metrics  
+6) Produces mandatory plots  
+7) Prints overfit audit  
+8) Provides a runnable paper-trading loop using a PaperBroker  

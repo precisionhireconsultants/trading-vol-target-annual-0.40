@@ -1,0 +1,281 @@
+https://www.youtube.com/watch?v=pBS5vrqrUjk&list=PLGfr3rdc5cCtt4CaNpdwx1pSj1APNCrpO
+
+Transcript:
+00:00:00
+ Just stop there one second, just so I understand. It only runs 10 minutes of the day, did you say? That's it. You trade 10 minutes a day? 10 minutes a day. Malik is up 700,000. The crazy thing is, that's in the last six months. One thing that's going to blow people's mind is, I don't have to do anything until here, for two years here. This is the process that I follow for every strategy that I create. And you make a ton of money without doing anything. To me, that is absolute insanity.
+00:00:30
+ Welcome to Undiscovered Traders by Kinfo, the only podcast that interviews verified six and seven figure traders. If it's not Kinfo, I don't personally believe that you know that that person can have actually made that money. And today we're interviewing Malik, who goes under the Kinfo name, is it Malik? TQQQTrader?
+00:00:53
+ Now, Malik is up 700,000 in verified Kinfol profits, a little more, much closer to the million in his actual profits, which we'll get into in a little while. The crazy thing is, that's in the last six months we've saw those profits come through on Kinfol. And this episode is a very special one. It's something a bit different that we do with the normal. It's pretty much a must-watch, because in this, Malik is going to determine…
+00:01:20
+ his strategy, how he comes up with the concepts, how he builds the models and builds the codes, backtests it across 42 years of data, and then how he automates that process. It's going to be like a small presentation and then a big demo. Perfect for kind of people who are wanting to get into this. But first of all, Malik, how are you?
+00:01:40
+ Yeah, doing pretty good. Really excited to talk about my journey and everything else here. But first of all, really, really thank you for inviting me on this podcast. As I said before, when I started trading, I used to watch your videos online and they were amazing. I think they were stellar and lots of fun.
+00:02:07
+ comedy in them and lots of value. So I used to love and watch those videos all the time. No, I appreciate that. I was a crazy 20-year-old, 20-plus-year-old kid, maybe 30 when I was just starting those. One day I'll go back. I said I'd always do a podcast and I'm back on this one, so that's nice. But Malik, in terms of your trading…
+00:02:31
+ You've made an incredible amount of money in a very short time. I really appreciate that you've been transparent on Kinfo, but also that you're going to be transparent enough to kind of show us the process of how you're doing it. And are you more of like a quant guy? Is that the right way to say it? I'm more of a systems guy. Yeah.
+00:02:49
+ Yeah, there is a small slight difference between quantitative and systematic. I am more of a systematic guy with a lot of mechanical. Everything is mechanical. Every rule and every algorithm, every decision is
+00:03:05
+ is all mechanical and it's tested against the last 42 years of data to make sure that it is robust. I use a lot of stress testing and make sure that these strategies can stand against a lot of market regimes, right? Like dot-com crash or 2008 crashes, ups and downs, like can it withstand all that the market throws at you every day and day in and day out, right?
+00:03:33
+ So that's what I do. I'm very different from a lot of folks that do the trading. Again, like nothing wrong in having that kind of a manual discretionary trading. But yeah, I am completely fully automated at this point. I don't,
+00:03:53
+ do anything in terms of trade execution or everyday day-to-day decision making it's completely automated I just let the computer take care of everything for me because I have a day job and I focus on the day job
+00:04:07
+ That's absolutely insane to me. So you've made nearly a million dollars without executing trades? Yep. It's been three years since I actually put in a trade in my brokerage account. Everything is done by the computer and it does it very, very consistently. There's no emotions there. It doesn't matter what the rest of the market is doing, tariffs or recessions or anything like that. It just does its job and that's what I really wanted there.
+00:04:34
+ To me, that is absolute insanity. It's bordering on what everyone's trying to do. Everyone's trying to build a trading bot. I remember Stephen Dux was talking about the Duxinator. And I mean, Malik, you've built the Malikinator. So first of all, what's your background? How did you learn how to do this? And then we'll go a bit into a demo. And also, what are you trading when you're simulating these trades?
+00:05:02
+ Yeah, I have prepared a few slides. I can quickly go through the slides and then talk about my background and my journey, if that's okay with you. Yeah, sure, sure. Let's do it. But just one question while you bring them up. A lot of people ask me when they see people make a big amount of money, how much did you start with? Because say if you start with 10 million and you placed one trade and you made 10%, you made a million. So what did you start with? How did that journey start quick?
+00:05:30
+ Yeah, so I started my journey almost 10 years, nine years ago. When I started, I just had a small account because I knew it was not going to go super well. So I started with like roughly 20K.
+00:05:48
+ Once I figured out, okay, this is my niche and I can consistently make money, I went to a bigger account. Like I started with around 200K. And yeah, right now it's 200 to 20K. And then now it's hitting a million in one of the accounts.
+00:06:08
+ I have a couple of accounts overall, but on the right hand side, you can see here, this is my this is my one of the accounts equity curve. So you can see until 2022, 2023, beginning of 23, I didn't make a whole lot of money.
+00:06:26
+ And then I started making consistent money. It doesn't mean that I make money day in and day out. Last year was, you know, a flat period. I didn't make a whole lot. But this year, again, the market, the regime suited my strategies. So I started making money again. And right now, yeah, this account is getting close to a million dollars here.
+00:06:47
+ Before that, we can quickly look at the kinfo. I would say my style is more of a position trader, where I hold the position, like the core position for as long as the trend is in place.
+00:07:04
+ But I trade some portion of those shares around it. So let's say, depending on the day and the trend, I might only hold like 30% of my shares. But like tomorrow I can add more and then day after tomorrow I might sell some more. But still like the position is not completely closed until it might take three months, six months, sometimes a couple of years. So it's not a swing or a day trading strategy. It's more of a
+00:07:32
+ slow end position trading strategy. So that's why when we go to the profit chart here, you see that there's not a whole lot in the last two years. It looks like I made all the money in this last six months. But what happened in reality is like when I started three years ago, that position, I was holding it until like last year, until the
+00:07:58
+ pull market this year until the pull market ended. And then the position was closed. So usually Kinfo tracks all the closed positions and then the profit is displayed. That's why you see this a little bit of a jumpy steps in there. But that's just a different visualization here.
+00:08:20
+ Yeah, but there's a lot of work going on behind the scenes, behind those jumps. And then, so I'm seeing SQQQ there. So are you trading, is that the NASDAQ? Is that a form of the NASDAQ that you're trading? Yeah.
+00:08:35
+ Yeah, so I'm a software engineer. I've been a software engineer for 20 years now. I used to work at Microsoft and then Salesforce. That's my background. I have been trading since almost 2016, 2015, 2016, and consistently profitable since 2022.
+00:08:54
+ And the key thing is I'm a fully automated systematic trader, as I said before. I don't make any manual day-to-day trading decisions. I don't figure out what to buy, when to buy, should I sell, how much to sell. All that stuff is automated. The strategy is completely automated. I just let the computer run it.
+00:09:13
+ Right now I'm doing seven strategies. Trend following and mean reversion are the two categories of those strategies here, both long and short. Trend following I would say is the bulk of the profits like is derived from the trend following.
+00:09:30
+ And it's a low frequency trading, like one to two trades per week. So my system is a pretty low frequency trading. So it's not really like going in and out consistently, constantly. But it'll figure out like when to really trade. One more special thing about this is I only trade TQQQ and SQQQ.
+00:09:53
+ These are the only two ETFs that I trade. One is a long triple leveraged NASDAQ 100. The other one is a short triple leveraged NASDAQ 100. So if I need to short, the algorithm chooses SQQQ. If I need to be long, it chooses TQQQ. So that's the only thing that it does. It doesn't trade individual stocks. It doesn't do anything else.
+00:10:18
+ Roughly the last three years since I went into production means I started this algorithm into the actual brokerage accounts. My annual rate is around 40% return. There were a couple of times where I hit a 33% drawdown, almost 30% drawdowns.
+00:10:35
+ And I put my strategy signals at Collective 2 so that anybody can actually take them and consume it. Either they get emails, SMS messages, text messages. Whenever I put a trade in my account, it automatically sends all those signals in real time through Collective 2. I may be contacting you for that after. I may be having a quick chat about getting those signals.
+00:11:02
+ Yeah, a few people have subscribed to those signals. If you go to Collective 2 and check my strategy there, they have live accounts, like they have live brokerage money assigned to my strategy. So right now that's $50,000 of money that's where these signals are being applied. That's real people. I'll put a link. I'll put a link in the description so people can link directly to it. Don't worry about it. So there's a link in the description below.
+00:11:31
+ Cool. All right, let's keep going. And then my journey, I categorized it as into three phases here. Exploratory phase, a discovery phase, and then a growth phase. I'm pretty sure like most of the successful traders, when you look at them, these are the phases that they usually go through. And exploratory phase is mainly starting in 2016 and
+00:11:57
+ I would say it lasted for three years. The key thing here is that I would say it's a strategy hopping, right? I'm trying to figure out what is my niche. So I tried with day trading, stocks in play, pretty much quickly in one year, I lost like 30% of my 20K.
+00:12:16
+ So it was just more of like putting your toes in the water and trying to get a feel for what the market does and how the market moves. Then I realized that, okay, day trading is not my cup of tea because it needs, you need to sit in front of the computer all day and looking for opportunities. And that is definitely not going to be possible for me because I'm a full-time software engineer. I have a job and
+00:12:43
+ Definitely it doesn't suit the way that I live, right? So I started looking for a different style of trading, went to swing trading, discretionary. So here it helped me quite a bit.
+00:12:58
+ to figure out, like, hey, how does the market move? Does it move, like, does it go up every day? Or when does it go up? How does it go up? I started learning about the market structure itself, the way that the market moves in terms of, like, consolidations and then breakouts and then huge push and then again a consolidation. Trends, all that stuff, I learned it here. Again, I didn't make a whole lot of money, break even for the most part. Still, again, you know, consistent process are set up.
+00:13:27
+ But after two, three years of doing this, I started with like a pullback and breakout setups, just like anybody else. I used to be a boom and bust trader where I used to make money. And then when the market pulled back, I used to give it everything back. And then it caused a lot of frustration because, oh man, like I made a ton of money here, but then I lost it in the next month. Then I started realizing that, okay, I need a process to sell, not just buying. And then there was no risk management. So
+00:13:54
+ It's all discretionary, like I didn't know how much to buy. So all that stuff. So the second phase is the discovery phase, where the frustration was getting bigger and bigger because there's no progress. So I was making money, losing money, making money and losing money all the time. At this point, I felt like, okay, I know I have a lot of knowledge, but there is no profits to show for it.
+00:14:21
+ So then I took a step back. I mean, it was a very tough time, like where I feel like I have done a lot of work here, but there's nothing to show for. There was points where like, OK, maybe I should just quit and do something else. Right. Because it was a lot of frustration. But then I started doing a hard retrospection, like, OK, what am I doing wrong here? Am I really progressing or just like wasting time here?
+00:14:44
+ Then I started realizing that I am trying to play somebody else's game here. Like, for example, Warren Buffett, right? Like we take his example. He doesn't do charting, technical analysis or day trading or swing trading or anything. He has his own thing, like where he sits probably on a desk and reads a bunch of company earnings and reports and all that.
+00:15:08
+ So based on that, he is able to, basically he created his own game where he does some things that he is good at, and that's how he makes money. So then I realized, okay, I need to look at what I'm good at, and I need to play my own game, not somebody else's game. I need to make my own rules and play that game because I'm good at it, right? That's the way to make money. And stock market is awesome because it lets you play any game you want, but you have to be really good at that game.
+00:15:37
+ Just to comment, I think that's an excellent point, by the way, because there's a common quote that everyone knows. It's like, excel at your strengths, but figure out what you're best at and just go all in on it. Don't try and fix your weaknesses because you're never going to ever be able to really fix your weaknesses sufficiently to be the best at it. And it's exactly what you've done here. Yeah.
+00:15:57
+ Yep. So then I realized that if you want to really make money, if I wanted to make money, I need three things here. One is edge, conviction, and then the process around that. I mean, some people say psychology is a major thing, but to me, that doesn't make any sense. Like it's absolutely nothing for me. Edge is something very different for everybody. But once you have an edge, which is like edge, I define usually as something that you are good at.
+00:16:25
+ you can do better than somebody else. That's your edge in the market. It can manifest in different ways. For Warren Buffett, it is the edges figuring out the companies that where he knows they are going to raise in value over time. And right now they are undervalued and he can stay with that, right? So everybody has that edge that they need to figure out. And then the conviction is also a big deal. Like,
+00:16:50
+ Just having the edge doesn't make you money. You need to have a strong conviction in your edge. Edge doesn't mean that you're going to make money every day, right? Day in and day out. There will be periods where your strategy or your edge is not going to make money. You will have a drawdown. And this conviction is going to make sure that you are still going to use that edge. And when the market regime or when the conditions turn in your favor,
+00:17:15
+ then you'll make money. So the edge is something like, hey, I have a sword, but then the conviction is when you can actually use it. It'll help you stick to that edge when the things are not in your favor. And the process is something that you need to use that edge over and over and over and make consistent money.
+00:17:36
+ So all these three are very, very essential. In the discovery phase, what I did was I looked at all my strengths. Again, my strength is analyzing data, creating strategies. I have a, because of all the manual discretionary trading that I did, even though it didn't make any money, I still have a really good understanding of the market structure, what works, what doesn't work in the market. And then I have coding skills because I'm a software engineer. I can write code and I can build systems. And then I also looked at my weaknesses.
+00:18:06
+ If you look at a lot of discretionary traders, they can make these decisions day in and day out for long periods of time. It's really hard for me to do that. That's my limitation and that's my weakness. That's why I was not able to consistently take a strategy and apply it day in and day out.
+00:18:25
+ And then I can't sit in front of a computer all day and consistently make those buys and sells at the right time without those emotions. Because emotions are a huge part of discretionary trading. So that was a very difficult thing for me to do. And that's, again, my weakness. Time commitment, again, I have family and then I have a full-time job, so...
+00:18:49
+ So what I did was I looked at what I cannot do. After looking at my strengths and limitations, I derived, okay, I cannot do day and swing trading or discretionary trading. I can't do individual stocks because you need to understand the technicals and fundamentals and you need to do a lot of market, like a sector analysis and all that stuff to actually trade the individual stocks, which I don't have time and I don't even have interest to trade like that.
+00:19:19
+ Cannot do fundamental analysis because I don't have the background in that. Most of the technical analysis I read later on when I actually back-tested a lot of that, none of that actually worked. I would say most of the technical analysis, like traditional patterns and the candle patterns and all those things, they don't have a whole lot of edge in the market.
+00:19:45
+ Some people make it work, but that's because of something else that they have, not just from a pure systematic perspective. So I figured out that the systematic trading through the index ETFs is my best way forward. Again, I wanted to leverage because I'm not scared of drawdowns, like 10, 20, 30, 40% drawdowns don't scare me. I'm okay to sit through those drawdowns and let the system run its course.
+00:20:14
+ NDX is my top choice because of the, again, I have a background in tech. I can correlate with the NASDAQ 100 because of all the exposure to the tech and the biotech. So I figured out TQQ and SQQQ are the trading vehicles to go long and short. So once I figured out all these things,
+00:20:34
+ Then I went back and said, okay, what is my edge here? I don't want to repeat here, but developing robust and simple strategies based on timeless market tendencies like momentum and mean conversion. These are the two anomalies in the market that you can say they existed for hundreds of years, decades, and they are going to continue because of human behavior, the human psychology.
+00:20:59
+ People tend to have greed and fear, and that's manifest in momentum and mean diversion. So I wanted to use systematic trading, couple that with my coding skills and with my skills that I have, and that's my edge. Personally, I gained the conviction through data.
+00:21:18
+ to rigorous backtesting. When I understood how my strategies behave in different regimes, what is the expected behavior, that gives me a strong conviction of, okay, this is what's expected. And right now, is my strategy doing the, is it working the same way that it's supposed to work, right?
+00:21:38
+ And as I said, the conviction prepares you to continue to grind through the tough drawdowns. Everybody will have drawdowns, right? I'm sure like there's no, 100% sure that there's no trader without a big drawdown. This conviction is really needed during those times. And if you don't have that, you're going to abandon that and go back to strategy hopping and all those bad habits.
+00:21:59
+ And also I need a process. I need infrastructure to consistently backtest and execute strategies. And WhiteLight is my tool that I wrote, like developed and designed and wrote from scratch. It is a backtesting as well as it does real-time trading for me. I write my strategies in there. I deploy them, test them. I test and deploy. And that's where this tool is born from. Right now, I would say when I started this, there were not many options.
+00:22:27
+ to backtest and deploy your strategies. Right now, there are lots of tools. You don't have to write them from scratch. There are lots of tools available in the market, like Realtest. I haven't personally used it, but I heard a lot of good things about that, that new traders can directly go there. All they have to focus is on essentially the strategy part of it, and everything else is done by those tools.
+00:22:54
+ My tool, the code name for my tool is Whitelight because it was so dark during that time. And then this was the tool that gave me hope. So I named it as Whitelight. It has a backtest engine. You can test multiple strategies at once. It does, when you run the test, it shows you your equity curve over a long period of time, the drawdowns associated with those, and it spits out all the trades. So you can manually look at all those trades and gain some insights if you want.
+00:23:22
+ And it also has the capability to run these strategies in real time. It can connect to my brokerage accounts, Fidelity and Alpaca, and it gets all the data from Polygon.io. It also caches all that data locally in case Polygon is down or something happened, right? So it has some robustness and fault tolerance built into it.
+00:23:43
+ The biggest improvement that I did in the last one to two years is sending telemetry alerts directly to my phone so that I don't have to really babysit anything there. So whatever it is doing, it will send me alerts like, hey, this is the strategy. This is our positions right now. This is what I'm going to do. And once it does the order placements and everything, it sends me data.
+00:24:08
+ And if there is some issue with any of these steps here, it will alert me, it will send me a high alert so then I can go and take an action on that. Yeah, I mean, initially, yeah, there were lots of hiccups back and forth. I fixed all of the stuff and right now it's pretty smooth. It's been like a couple of years since I had any issue with execution or running these algorithms. So it's been pretty smooth the last two years, but it took me a few years
+00:24:38
+ to get to this point. And then I'm going to quickly do a demo here talking about what does the real edge look like for me and the conviction and all the process in action. I think what you're about to do now that no one else has ever done before is actually show the process of systematic trading and how it's done. So I don't want to hold you back from it.
+00:24:58
+ Awesome. So the first thing is, from an operational perspective, I run this strategy in the cloud, AWS cloud. So I have a virtual machine there. This is my virtual machine. I remote it into that. And the cool thing is, I even automated when it should run. Because my strategy only runs in the last 10 minutes of the day, it only has to make two additions. Basically, it has to know
+00:25:23
+ Should I buy TQQ? How much to buy? What is the position size for SQQ? Only two decisions it has to make. And then based on that, it'll connect to my brokerage and then places the right orders and stuff.
+00:25:37
+ Just stop there one second, just so I understand. It only runs 10 minutes of the day, did you say? That's it. 10 minutes a day? 10 minutes a day. Even that is automated. I have resource scheduling, everything set up so that it automatically starts 15 to 20 minutes before the market close. And it just on boot, it does this.
+00:26:00
+ If you're enjoying this level of transparency from million-dollar traders, hit like, hit subscribe. Helps the channel more than you know to get more guests like this and more guests like this verified on Kinful. So, like, first step is it is going to... Let me see if I can zoom in a little bit. Yeah. Cool. So, first step is it's downloading the data for the tickets. SQQQ, TQQQ, and NASDAQ 100, NDX.
+00:26:27
+ It is running my strategy right now. It's called dual strategy because it can do both short and long. I used to run only the long a couple of years ago, two and a half years ago. It was only long based, long biased. But now I added in the last, I would say, one year, I have added a couple of short strategies also into this.
+00:26:50
+ So it's running all those strategies against some of the data that I have. I'll show you while it is running, I'll show you the data that I have. So if you look at this folder, like it's caching all the data. Let's look at the NASDAQ 100 here, NDX. NDX is the index for NASDAQ 100. So you can see it's just a simple date, open, high, low, close, and the volume. Volume is zero because it's an index, right?
+00:27:18
+ So it is caching all the data from 1985. That's when the index actually started. And it knows it already has data till yesterday. So all it is looking for is data, real-time data right now. And it got it from polygon.io. So, okay, let's go step by step. So it got the data. It ran my strategy here.
+00:27:47
+ And these are the two critical pieces. It determined that today my TQQ position size should be 30% of my portfolio. SQQ position size should be 0%.
+00:28:02
+ So these are the two critical pieces. That's it. Those are the only two things that are important at this point for me, right? So if I need to tell somebody that, hey, or to myself, how much TQQ should I be holding today? 30%. So let's say I come in with 100% of TQQ today. In the last 10 minutes of today, it is going to sell 70% to make sure that I only have 30%.
+00:28:30
+ exiting the close of the test. This is some extra information for me to know, okay, why 30%, but not super interesting for other people. So now what it is, the next step, it's connecting to my brokerage accounts. As I said, I have Fidelity, a lot of accounts on Fidelity and Alpaca. So it basically said on this account, I have to buy 42 shares of TQQQ.
+00:28:58
+ It knew how many shares I already have. And it said to be 30%, you need to buy 42 shares. Same thing for the next account. And then...
+00:29:10
+ Same account, it says no changes needed for SQQ, current share count is zero. Because today's share count for SQQ is zero, and I already have zero, which I don't have, it says no changes needed for that position. Same thing, it goes to the next account, and then determines how many shares it needs to buy.
+00:29:30
+ Now it didn't buy because it's still during that middle of the trading day. So the last 10 to 15 minutes, it knows like, okay, this is the time. And then it just goes and puts in orders for them and makes sure that I am closing that day with 30% of TQQ in those accounts.
+00:29:49
+ So in actual, that's what my process is. As I said, I don't babysit this one. It just boots itself on boot. It runs this. A lot of fault tolerance is also built into it. So if, let's say, a polygon is down, it can fall back to different source of data. The only thing is sometimes my Fidelity accounts, sometimes the Fidelity broker itself, there are two instances where
+00:30:14
+ due to like in the bear market conditions, it couldn't put in orders because broker was rejecting those orders. But it could retry. And then the last, like it retried for five to 10 minutes. And then at the end of the, like the last minute, it was able to put in the trades.
+00:30:30
+ So it can do a lot of recovery from any disaster that you have. Even if you shut down this machine, let's say if you shut down this machine right now, 10 minutes before the market closes, it's going to automatically boot itself and do all these things. It won't let me set my own strategy down.
+00:30:49
+ No, it's crazy because to me it looks like I haven't seen anything like this since MS-DOS in 1993. But it's clearly significantly more powerful and more sophisticated. But the premise of what it's built on looks quite simple. It's not something that needs a billion gigabyte computer to run it. It looks fairly simple.
+00:31:14
+ All it needs is this data. That's it. It only needs this simple data, this file, and then SQQ and TQQ. That's it. And the rest, it does everything. These are the only inputs to it. Price, right? The price is the only input here. There's no news. It doesn't do any ML or machine learning or AI or anything. It's just pretty simple.
+00:31:38
+ And the strategies, as I said, there are seven strategies. It's running all together. And based on the strategy output, it figures out how much positions I need to have during that time.
+00:31:50
+ Yeah, it looks extremely simple. I don't think you're going to have any power outs or anything like that from overpowering the electricity in your house, running those systems. I don't need too many servers. But I mean, so how I guess how are you following the process to think, OK, I want to look into this pattern. I want to look into this pattern. Maybe this pattern is going to work. How do you do that first part?
+00:32:11
+ And then I suppose after you've got something in your head, you backtest it for 42 years and see if it works and start tweaking with the settings. But can you just walk us through that part of how you do it? Yeah. All right. Let's jump to that one. Yeah. So this is a process that I follow for every strategy that I create. I go right model that code. Like, for example, if you say trend following, it would be as simple as let me bring up this. Let's see. NDX.
+00:32:41
+ A lot of people make it super complicated, but let me change it. See, you can see I don't look at charts or anything anymore. So I don't even have the right charting settings here. But if you look at the NASDAQ 100, right, a lot of people ask this question like, hey, is it the bottom yet? Is it the bottom yet? Right. On Twitter, this is the most common question like, oh, is it are we at the bottom right now? Right.
+00:33:06
+ But if you just, all you have to do is like add a moving average, a 50-day moving average, and then add like a 250-day moving average on top of it. Well, let's say, so it's a simple strategies. Like when you think of a strategy, all I am thinking is like, how can I model this trend? So if I represent my 250-day moving average in green here,
+00:33:35
+ All I can say is as long as this price is above this 250-day moving average, I say this is a nice trend here. I want to capture this chunk of money here, right? Like if I start my position here on the 250-day moving average when it breaks out, I don't have to exit until the end here. And I made like quite a bit of money here, right? So if you look at my kinfo, the reason I don't have it's flat from here to here is because
+00:34:03
+ I just held this trade like as long as I could until the trend broke. Same thing here, this year. Once the trend broke and once we came above this 250-day moving average, this is when I got in and then this is where I exited, right? So this three-month period has netted me like almost half a million dollars here.
+00:34:30
+ I didn't do anything special here. All the astrology did was, as soon as we jumped above this 50-day moving average, it just went with 100% TQQ. And NASDAQ jumped almost, I would say, 15, maybe 20%, roughly 20% from here to here. And TQQ went 60% in that time, in just two, three months.
+00:34:58
+ And in these times, I didn't have a single trade. All I did was just holding on to TQQ and boom, that's it. And then it exited around this time here due to basically the shorts and the mean diversions and other strategies also kicked in at that time. They basically figured out that the trend has been slowing down here. So we need to get out of here. Right.
+00:35:23
+ That's, in a nutshell, like even before the last bull market or from here to here, as I said, 2023, simple. So you don't have to ask a question like, hey, when do I enter? Is it the bottom yet? No, you don't have to ask that question. As soon as you are above the 50-day moving average or 250-day moving average, you just go in, right? One thing that's going to blow people's mind is,
+00:35:49
+ None of these big runs have started without the price getting above the 50 and the 250-day moving average.
+00:35:58
+ That's a huge edge, right? Like none of these, like if you look at the history of NASDAQ, mathematically it's impossible for a rally to sustain and be huge rally without it being about the 50-day or the 250-day moving average. It's impossible. Like you cannot have a 30, 40, 50% rallies below these moving averages. Sustainable averages, sustainable rallies.
+00:36:24
+ 100%, right? Like that's your edge, a huge edge. People, that's simple. Like it's just staring right in your face. You don't have to have a fancy RSI or some kind of a Ichimoki cloud or something, right? Like you don't need anything. It's just as simple as this. All you have to do is like look at the history and then see, oh, like boom. If I enter here, I don't have to do anything until here for two years here. And you make a ton of money without doing anything.
+00:36:55
+ Yeah, I think on the surface, your strategy, anyone who doesn't do software engineering might think that your strategy is really complicated. But I have a feeling that it's not as complicated as people might think. Yeah. Okay, so let's say you write some strategy as simple as that, right? And right now, my strategy, as I said, it has seven different sub-strategies in them.
+00:37:19
+ They're all very, very simple strategies, like mean reversion, like when your speed of the velocity of the trend is slowing down, you need to basically take some of the money out, right? That's a simple concept.
+00:37:34
+ How do you model that? There are multiple ways to model that. You can do rate of change, right? You can just, all you have to do is like, let's say you are going in the car at 40 miles per hour. If you are going to 50 now, 60, then you know that you are accelerating. You are going above the speed limit and you are going faster now. All you have to do is look at the rate of change from 40 to 50, 50 to 60. You are accelerating.
+00:37:59
+ But when you go from 40 to 30 to 20, then it's decelerating. You're going down, right? So it's a simple math. Like all you have to do is like do a rate of change and you will have a mean regression strategy right there.
+00:38:13
+ So simple concepts like those, you can take and model them and then backtest and see how that looks like. So this is the data that I'm, so first let's talk about the edge, right? So if you, this is my edge, like this is my strategy. Equity curve starting 1985. If I apply the same set of rules starting in 1985 and do nothing, I didn't do anything for 45 years. This is where I will end up. This has an 80% return per year.
+00:38:42
+ compared to buy and hold of QQQ, which is also super great. I think it's roughly 12% or something since 1985. And again, it goes through drawdowns and all that stuff, but buy and hold of QQQ is this red line. Instead, let's say you bought TQQQ, which is a triple leverage ETF,
+00:39:03
+ You bought that, it done really well until 2000. And then because of this dot-com crash, it came back and it never came back to those previous size, but it still beats QQQ for the most part.
+00:39:14
+ The only problem is you have a ton of drawdowns here, 80, 90, 95% drawdowns in this TQQ. And it's very impossible to hold, right? So that's it. And then my strategy, if you look at this, because it's a combination of long and short, this dot-com, when this crash happened, almost 80% of Nasdaq crashed. I'm actually making money here still.
+00:39:37
+ I have still ups and downs, but I am actually making money here. Same thing with 2008. My strategy actually made money here in 2008. If it were run, right? Like if I knew it. So the same way, like now I know I have in 2020, you can see the 2020. Look, it actually made a ton of money here in 2020. I know where it struggles, like where the market is going sideways. It actually struggles a little bit here.
+00:40:05
+ So I know the weaknesses of my strategy. Let's say if the NASDAQ is flat for the next one year, I know my strategy is going to struggle. But that's by design, right? Like you have to take the good with the bad. So this is the edge and the conviction behind it. Now I know I don't have to abandon this strategy. I know, just I know, keep letting it play out, like let it run, right? Another data points that it spits out is when you run this backtest, the monthly returns.
+00:40:33
+ How does it look like? Yearly returns, how do they look like? As I said, it does really well in these volatile times, but if you look at 1997 to 2000, those are blockbuster years, right? It was making 180% a year, 300%, 200%, 169%. Even during the crash, dot-com 2000 crash, it actually made 200% profit.
+00:40:57
+ that year, and 152% the next year. During the 2008 year, it made 83%, and 2009 was 155%. The years it struggled, like 2004 and 2005, were flat. And it didn't make any money because it's supposed to be flat, right? It gives you a good understanding of, like, in 2020, again, it's 469% in that one year. And the year after 2021 is 81%.
+00:41:25
+ I mean, you could have only, in my head, you could have only looked at the market over the last, as long as it existed, and you've looked for the signs of the change in direction or where the crashes have come and what's led to the crashes, and you've figured it out to predict any future crashes or volatile price movements. Am I right? Yeah.
+00:41:54
+ Well, I mean, you don't have to predict at all with this. So, like, look at an example of this year, right? There was a tariff crash, like 20% crash in NASDAQ. My strategy also crashed when NASDAQ crashed, but it only crashed 20%.
+00:42:10
+ But I knew, okay, I don't have to panic because that's by design because I have seen so many of these 20% crashes before, right? This is one of them. But look at what happened after that. May was 23%, June was 20%, July was 4%, and then August is 5%. So I know how it recovers. As soon as the market recovers, I'm going to make all that money back.
+00:42:34
+ So there is no need of prediction. And if there is another crash in the next two months, I know how it is going to behave. I know what it is going to do. So I just let it do its thing and I don't interrupt. Basically, in a nutshell, I just took myself out of this entire trading and let the system do its thing.
+00:42:51
+ That's when the trading is consistent and it actually reaps the entire edge. If I come into the middle and panic and let's say I stop my strategy here, then I'm going to lose all these big profits that come after that, right? Which is a huge thing.
+00:43:10
+ So I'm not scared of these drawdowns. Like, you know, yeah, bring me 20, 30, 40% drawdowns. I'm not worried about it because I have seen a lot of these. Even though I didn't personally experience it, I know from the past studying, like the data here, there were crashes, drawdowns. And then the next one, okay, let's go to the drawdowns here.
+00:43:28
+ This is a picture, like a visual representation of the drawdown. So if you have a 10% drawdown, you'll see something like this here, right? And then this is the duration of the drawdown. I plotted basically across the entire 48 sub-data here. In 1992, there was a 50% drawdown here, and it lasted for almost one and a half year. But if you were able to withstand that, look what happened after that.
+00:43:54
+ Like there was a big drawdown in the 90s. It looks like a little blip, but you have missed out on all this big, huge upside, which is almost like a thousand times or a hundred times your money in the next decade. Drawdowns are nasty. Nobody likes them, right? But it is part of the game. Like you have to withstand the drawdown. Otherwise, you won't be able to get the profit after that.
+00:44:18
+ So right after the drawdown is when you actually make money. So let the drawdown go through and then you'll make money after that. So these are on the list of all the drawdowns like all the 40 years in the last 40 years. And like this is the nasty drawdown. I think in 2014 to 2016 when the market was flat and it was like stuck in a range, I had almost like a 30% drawdown here in my strategy. Personally, I didn't again, like I didn't trade my strategy at that time. I started trading in
+00:44:46
+ The last three years, if you look at the last three years, I had two 30% drawdowns in my accounts, which you can see even like when you go to my Fidelity account, even though it looks smooth here, there was this 20% drawdown here. There was another 15% drawdown. This was a huge 24, 25% drawdown here.
+00:45:09
+ And even though this looks small here, this was a 30% drawdown right here. So you have to endure the drawdowns. I think that's the thing. Like when you have the conviction, you can go back and you can endure that. Can I ask a question?
+00:45:24
+ Yeah. You have a lot of conviction in your system. I can see. It's back tested for 42 years. Are you taking profits as you go? Or do you have so much conviction in your system that you're just going all in to make as much money as possible by compounding the profits? 100%. You're all in? You're compounding? Yep.
+00:45:47
+ Because you can never predict the future. Something could happen that's never happened in the last 50 years, but you feel still confident with conviction. I might hit a 50% drawdown, but if you look at it, this is all the money I made, right? Like, yeah, even if it goes back to 50%, all I'm going back is like three months ago. Because I went from 560 to almost a million dollars here in just like three months.
+00:46:14
+ Even if I have a 50% drawdown, yeah, I'm just going back to three months ago. It's not a huge deal. This is all bonus for me. I already made a lot of money in this strategy, right? So I'm just going to let it continue. And I know how... Because this is built on very simple concepts like these, I know it is going to work because that's how the market behaves. There is no other way that the market... Like the market...
+00:46:39
+ Tendencies cannot change, right? It's all fear and greed. Like when the people are fearful, they sell and then you go below the 250 moving average. And when they're greedy, it comes back up and then you participate in that. So it's based on simple concepts like that that makes it...
+00:46:55
+ act to the conviction but if I have a strong like if I have a very complex strategy with like oh like if the moon aligns with the earth and then Jupiter is here in this in this formation then go by TQQ then that's not a good strategy it's not going to work because it's not made on the timeless market tendencies right
+00:47:18
+ So that's why I feel very confident and I have a lot of conviction here. Now, Malik, it's a fantastic, fantastic presentation. I think you've given an excellent insight, way more value than you ever needed to. But this is Kinfo, this is transparency. I don't really have much else to say because I think you've covered everything. It's just...
+00:47:41
+ Mostly, to summarize, if someone wants to get started in doing this, other than clicking the link below to find out more information about you, how would you recommend they even started in the process that you've gone through?
+00:47:53
+ If somebody is interested in systematic trading, I would recommend, first of all, like spending time in the market doing manual trading, just like how I did. If you don't trade, you won't know these market tendencies. You have to be in the trenches to actually feel and experience that. So the first thing is like,
+00:48:16
+ Start with less money, like $5,000, $10,000, whatever it is. Very small money you don't care about. Try out all these things, like swing trading. If you're interested in position trading, go try all these things and experience that pain and that happiness of when you make money. All that thing, you need to first experience that.
+00:48:37
+ Then go and see a model. During that time, you'll get your own ideas and thoughts. You'll be able to create your own strategies from your market experience. That's when you'll have a strong conviction. But if you borrow an idea from somebody else, you won't have that conviction. And you're going to abandon that strategy when it is in a drawdown.
+00:48:57
+ So that's my recommendation. Spend some time, figure out who you are, figure out what makes sense to you, and then see if you can model that. Learn some coding, either Python or something like that, C Sharp or whatever that you are, Java or whatever language you are comfortable with. Learn and then go and model that backtest.
+00:49:20
+ Keep backtesting. I have backtested almost 300 to 350 strategies. Only seven of them actually worked.
+00:49:29
+ The rest of them are all like people say, oh, buy the dip or do this, right? Like breakouts or breakdowns, supports and resistance. None of them actually have an edge. They don't work. They look like they work on the chart. But when you take all the 40 years of data and run that model against that, they don't make money. They can't beat QQQ. They can't beat TQQQ.
+00:49:54
+ They'll make money, but they're not as good as buy and hold of QQQ, right? So you can't believe everything, whatever is there, especially on Twitter. Most of those strategies look like good on maybe some specific periods of time, but they don't look great over a long period of time. They don't have that. Because they're not based on actual market, like how the market goes.
+00:50:17
+ And then also don't believe in the complexity. Don't think that your strategy has to be super complex to make money. The seven strategies that have worked for me are the simplest of the simplest strategies. And they just work.
+00:50:31
+ Yeah, I mean, there are some people like, you know, Jim Simon and all those guys, like, you know, big hedge fund guys. They thrive on the complexity and they have made money. But I'm not them, right? Like, again, as I said, I have to play my own game and I let everybody else play their own game. Go on, do you have any final word? I thought that was the perfect way to close out. But go on, do you have any final words?
+00:50:54
+ Yeah, reach out to me on, you can reach out to me on Twitter. My handle is RealTQQQTrader. And yeah, initially I started with TQQ, so I just kept it as that. And I don't see a whole reason, like I don't see a reason why
+00:51:12
+ I'll be moving away from this strategy at all. So I plan to run this for the next decade, two decades. And yeah, right now it's a seven-figure strategy and I don't see why it can't be a 10-figure strategy because it can scale huge, millions and even to billions. So yeah, I'll keep running this.
+00:51:32
+ I'll be following. I'm sure everyone else will be following. I'm going to be looking for the updates. And I'll be seeing the updates on Kinfo, which is beautiful. But two things that really stuck out to me is play your own game. Play to your own strengths. Don't play someone else's game. Play your own game, I think. Couldn't have been said more beautifully.
+00:51:50
+ And the other thing is that you've tested, was it 350 strategies and only seven of them, you've decided to look at 350 strategies that you think had a chance at working and only seven, only seven. So you've got to do your work. Malik, thank you so much for your time. It's probably the most informative episode we've ever done. I think it definitely delivers on the promise that we made at the start. And check the questions in the comments in a week or so, because I'm sure it's going to be fun.
+00:52:19
+ Awesome. Again, thank you very much for reaching out to me and it's a blast to share my journey and everything else. So yeah, really thankful and I appreciate that.
